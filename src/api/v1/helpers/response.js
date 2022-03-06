@@ -25,4 +25,4 @@ class ErrorResponse extends Error {
   }
 }
 
-export default { ErrorResponse, SuccessResponse };
+export { ErrorResponse, SuccessResponse };

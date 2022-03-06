@@ -2,7 +2,7 @@ import { validationResult } from 'express-validator';
 import { ErrorResponse } from '../helpers/response.js';
 import constants from '../../../config/constants.js';
 
-export default (req, res, next) => {
+export const validator = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     throw new ErrorResponse(
