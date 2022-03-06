@@ -15,8 +15,8 @@ export default {
     INTERNAL_SERVER_ERROR: 500,
   },
   MESSAGES: {
-    INTERNAL_SERVER_ERROR: 'Internal Server error. Please try again!',
-    INVALID_CREDENTIALS: 'Invalid credentials',
+    INTERNAL_SERVER_ERROR: 'Internal Server Error. Please try again!',
+    INVALID_CREDENTIALS: 'Invalid Credentials',
     LOGIN_SUCCESS: 'Login Success',
     UNAUTHORIZED: 'Unauthorized access',
     INPUT_VALIDATION_ERROR: 'Input Validation Error',
