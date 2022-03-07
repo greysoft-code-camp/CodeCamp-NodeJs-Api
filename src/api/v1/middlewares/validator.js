@@ -4,7 +4,6 @@ import constants from '../../../config/constants.js';
 
 export const validator = (req, res, next) => {
   const errors = validationResult(req);
-  console.log(req.body);
 
   if (!errors.isEmpty()) {
     throw new ErrorResponse(
