@@ -1,5 +1,6 @@
 import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
+import config from '../../../config/config.js';
 
 const swagger = () => {
   const options = {
@@ -21,7 +22,7 @@ const swagger = () => {
       },
       servers: [
         {
-          url: 'http://localhost:3000/books',
+          url: `http://localhost:${config.port}`,
           description: 'local server',
         },
         {

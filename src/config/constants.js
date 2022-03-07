@@ -21,6 +21,8 @@ export default {
     UNAUTHORIZED: 'Unauthorized access',
     INPUT_VALIDATION_ERROR: 'Input Validation Error',
     INVALID_REQUEST: 'Invalid Request',
+    ROUTE_DOES_NOT_EXIST: 'Sorry Route does not exists',
+    SERVER_STARTED: 'Server running on port',
     MONGODB_CONNECTED: 'MongoDB Successfully Connected',
     MIN_PASSWORD_ERROR: 'password cannot be less than six',
     EMAIL_REGEX:

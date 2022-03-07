@@ -31,12 +31,15 @@ const router = express.Router();
  *    properties:
  *      fullName:
  *        type: string
+ *        example: "Ayuba Dauda"
  *      email:
  *        type: string
  *        format: email
+ *        example: "shehu.lawal@gmail.com"
  *      password:
  *        type: string
  *        format: password
+ *        example: "admin123"
  *  User:
  *    type: object
  *    required: true
@@ -99,7 +102,7 @@ router.post('/login', userLoginSchema, validator, login);
  *         description: User object
  *         in:  body
  *         required: true
- *         type: string
+ *         type: object
  *         schema:
  *           $ref: '#/definitions/NewUser'
  *     responses:
@@ -110,6 +113,6 @@ router.post('/login', userLoginSchema, validator, login);
  *       400:
  *         $ref: '#/definitions/Error'
  */
-router.post('/registration', userRegistrationSchema, validator, registration);
+router.post('/signup', userRegistrationSchema, validator, registration);
 
 export default router;

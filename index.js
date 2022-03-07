@@ -4,15 +4,17 @@ import cors from 'cors';
 import db from './src/config/db.js';
 import { errorHandler } from './src/api/v1/middlewares/error.js';
 import _protected from './src/api/v1/middlewares/protected.js';
-import swagger from './src/api/v1/helpers/swagger.js';
+import Swagger from './src/api/v1/helpers/swagger.js';
 import user from './src/api/v1/routes/user.route.js';
 import auth from './src/api/v1/routes/auth.route.js';
 import config from './src/config/config.js';
+import constants from './src/config/constants.js';
 
 const app = express();
 const corsOptions = {
   origin: '*',
 };
+const swagger = Swagger();
 
 // middlewares
 app.use(express.json());
@@ -26,7 +28,7 @@ app.use('/api/user', _protected, user);
 app.use('/api-docs', swagger);
 app.use('*', (req, res) => {
   res.status(500).json({
-    message: 'Sorry Route does not exists',
+    message: constants.MESSAGES.ROUTE_DOES_NOT_EXIST,
   });
 });
 app.use(errorHandler);
@@ -35,5 +37,5 @@ app.use(errorHandler);
 db();
 
 app.listen(config.port, () =>
-  console.log(`Server running on port ${config.port}`)
+  console.log(`${constants.MESSAGES.SERVER_STARTED} ${config.port}`)
 );
