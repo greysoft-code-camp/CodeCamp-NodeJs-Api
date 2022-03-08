@@ -7,7 +7,8 @@ export const validator = (req, res, next) => {
 
   if (!errors.isEmpty()) {
     throw new ErrorResponse(
-      constants.MESSAGES.INPUT_VALIDATION_ERROR,
+      //constants.MESSAGES.INPUT_VALIDATION_ERROR,
+      errors.array(),
       constants.RESPONSE_STATUS_CODES.BAD_REQUEST
     );
   }
