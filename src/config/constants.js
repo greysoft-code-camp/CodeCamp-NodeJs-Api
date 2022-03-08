@@ -34,4 +34,7 @@ export default {
     PASSWORD: 'password',
     FULLNAME: 'fullName',
   },
+  ENUM: {
+    TODO: ['backlog', 'progress', 'review', 'merged', 'done'],
+  },
 };
