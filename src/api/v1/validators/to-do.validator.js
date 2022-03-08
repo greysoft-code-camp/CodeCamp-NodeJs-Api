@@ -1,13 +1,11 @@
-import { body } from 'express-validator';
+import { body, check } from 'express-validator';
 import constants from '../../../config/constants.js';
 
-export const userRegistrationSchema = [
-  body(constants.FIELD.EMAIL).isEmail(),
-  body(constants.FIELD.PASSWORD).isLength({ min: 6 }),
-  body(constants.FIELD.FULLNAME).notEmpty({ checkfalsey: true }),
+export const create = [
+  body(constants.FIELD.TODO_BODY).notEmpty({ checkfalsey: true }),
 ];
 
-export const userLoginSchema = [
-  body(constants.FIELD.EMAIL).isEmail(),
-  body(constants.FIELD.PASSWORD).isLength({ min: 6 }),
+export const update = [
+  body(constants.FIELD.TODO_BODY).notEmpty({ checkfalsey: true }),
+  check(constants.FIELD.TODO_LIST).isIn(constants.ENUM.TODO).optional(),
 ];

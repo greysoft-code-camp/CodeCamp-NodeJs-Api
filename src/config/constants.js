@@ -33,6 +33,10 @@ export default {
     EMAIL: 'email',
     PASSWORD: 'password',
     FULLNAME: 'fullName',
+    BOARD_NAME: 'boardData',
+    BOARD_ID: 'boardId',
+    TODO_BODY: 'body',
+    TODO_LIST: 'list',
   },
   ENUM: {
     TODO: ['backlog', 'progress', 'review', 'merged', 'done'],

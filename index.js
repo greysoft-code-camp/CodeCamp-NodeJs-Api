@@ -7,6 +7,7 @@ import _protected from './src/api/v1/middlewares/protected.js';
 import Swagger from './src/api/v1/helpers/swagger.js';
 import user from './src/api/v1/routes/user.route.js';
 import auth from './src/api/v1/routes/auth.route.js';
+import todo from './src/api/v1/routes/to-do.route.js';
 import config from './src/config/config.js';
 import constants from './src/config/constants.js';
 
@@ -25,6 +26,7 @@ app.use(morgan('dev'));
 // Routes
 app.use('/api/auth', auth);
 app.use('/api/user', _protected, user);
+app.use('/api/todo', _protected, todo);
 app.use('/api-docs', swagger);
 app.use('*', (req, res) => {
   res.status(500).json({

@@ -1,9 +1,9 @@
 import ToDoModel from '../models/To-do.model.js';
 
 export default {
-  create: async ({ boardId, body }) => {
+  create: async (data) => {
     try {
-      let todo = new ToDoModel({ boardId, body });
+      let todo = new ToDoModel(data);
       let result = await todo.save();
       return result;
     } catch (error) {
@@ -12,23 +12,23 @@ export default {
   },
   delete: async (id) => {
     try {
-      let result = await ToDoModel.deleteOne({ _id: id });
+      let result = await ToDoModel.deleteOne(id, { new: true });
       return result;
     } catch (error) {
       throw new ErrorResponse(error.message);
     }
   },
-  update: async (data) => {
+  update: async (id, data) => {
     try {
-      let result = await ToDoModel.updateOne(data);
+      let result = await ToDoModel.findByIdAndUpdate(id, data, { new: true });
       return result;
     } catch (error) {
       throw new ErrorResponse(error.message);
     }
   },
-  getOne: async (data) => {
+  getOne: async (id) => {
     try {
-      let result = await ToDoModel.findOne(data);
+      let result = await ToDoModel.findOne(id);
       return result;
     } catch (error) {
       throw new ErrorResponse(error.message);
