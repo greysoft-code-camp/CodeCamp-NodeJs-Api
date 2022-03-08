@@ -2,8 +2,8 @@ import Board from '../models/Board.model.js';
 
 export const create = async (req, res) => {
   //this.clear();
-  let boardData = req.body;
-  let newBoard = new Board(boardData);
+  let boardData = req.body.boardData;
+  let newBoard = new Board({ title: boardData });
   newBoard
     .save()
     .then((board) => {
