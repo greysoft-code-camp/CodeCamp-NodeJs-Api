@@ -2,8 +2,7 @@ import Board from '../models/Board.model.js';
 
 export const create = async (req, res) => {
   //this.clear();
-  let boardData = req.body.boardData;
-  let newBoard = new Board({ title: boardData });
+  let newBoard = new Board({ title: req.body.title, user: req.user._id });
   newBoard
     .save()
     .then((board) => {
@@ -15,7 +14,9 @@ export const create = async (req, res) => {
     });
 };
 export const update = async (req, res) => {
-  Board.findOneAndUpdate({ _id: req.params.boardId }, req.body, { new: true })
+  Board.findOneAndUpdate({ _id: req.params.boardId }, req.body.title, {
+    new: true,
+  })
     .then((board) => {
       if (!board) {
         return res.status(404).send({
@@ -55,7 +56,7 @@ export const getById = async (req, res) => {
 };
 
 export const getAll = async (req, res) => {
-  Board.find()
+  Board.find({ user: req.user._id })
     .then((boards) => {
       res
         .status(200)

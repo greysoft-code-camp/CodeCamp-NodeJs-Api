@@ -5,7 +5,6 @@ import db from './src/config/db.js';
 import { errorHandler } from './src/api/v1/middlewares/error.js';
 import _protected from './src/api/v1/middlewares/protected.js';
 import Swagger from './src/api/v1/helpers/swagger.js';
-import user from './src/api/v1/routes/user.route.js';
 import auth from './src/api/v1/routes/auth.route.js';
 import todo from './src/api/v1/routes/to-do.route.js';
 import board from './src/api/v1/routes/board.route.js';
@@ -26,8 +25,7 @@ app.use(morgan('dev'));
 
 // Routes
 app.use('/api/auth', auth);
-app.use('/api/board', board);
-app.use('/api/user', _protected, user);
+app.use('/api/board', _protected, board);
 app.use('/api/todo', _protected, todo);
 app.use('/api-docs', swagger);
 app.use('*', (req, res) => {

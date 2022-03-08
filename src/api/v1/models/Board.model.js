@@ -6,6 +6,10 @@ const BoardModel = new mongoose.Schema(
       type: String,
       required: [true, 'The board title is required'],
     },
+
+    user: {
+      type: mongoose.Types.ObjectId,
+    },
   },
   {
     timestamps: true,

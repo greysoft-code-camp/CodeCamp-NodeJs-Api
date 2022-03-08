@@ -11,14 +11,14 @@ import { create, update } from '../validators/to-do.validator.js';
 
 const router = express.Router();
 
-router.post('/newtodo/:boardId', create, validator, createToDo);
+router.post('/todo/:boardId', create, validator, createToDo);
 
-router.get('/getTodo/:TodoID', getToDo);
+router.get('/:TodoID', getToDo);
 
-router.get('/getAllTodo', getAllToDo);
+router.get('/', getAllToDo);
 
-router.patch('/updatetodo/:TodoID', update, validator, updateToDo);
+router.patch('/:TodoID', update, validator, updateToDo);
 
-router.delete('/removetodo/:TodoID', deleteToDo);
+router.delete('/:TodoID', deleteToDo);
 
 export default router;
