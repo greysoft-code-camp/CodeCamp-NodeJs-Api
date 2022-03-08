@@ -1,4 +1,5 @@
 import express from 'express';
+import { validator } from '../middlewares/validator.js';
 import {
   createToDo,
   getAllToDo,
@@ -9,11 +10,11 @@ import {
 
 const router = express.Router();
 
-router.post('/newtodo', createToDo);
+router.post('/newtodo', validator, createToDo);
 
-router.get('/newtodo', getToDo);
-router.get('/newtodo', getAllToDo);
-router.patch('/newtodo', updateToDo);
-router.delete('/newtodo');
+router.get('/getTodo', validator, getToDo);
+router.get('/getAllTodo', validator, getAllToDo);
+router.patch('/updatetodo', validator, updateToDo);
+router.delete('/removetodo', validator, deleteToDo);
 
 export default router;
