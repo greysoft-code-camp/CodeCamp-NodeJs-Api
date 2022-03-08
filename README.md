@@ -1,5 +1,4 @@
 # CodeCamp-NodeJs-Api
-<<<<<<< HEAD
 
 ## The api implementation of code camp to-do using nodeJs
 
@@ -19,7 +18,7 @@
 
 ### To access the API documentation, visit: 
 
->Slocalhost:5000/api-docs
+>localhost:5000/api-docs
 
 ## To install the server locally,
 
@@ -28,3 +27,7 @@
 #### then run:
 
 >npm instaall && npm run dev
+
+### To access the API documentation on heroku, visit: 
+
+>https:/greycodecamp.herokuapp.com/api-docs
