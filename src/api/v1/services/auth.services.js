@@ -19,14 +19,14 @@ export default {
       if (!user) {
         throw new ErrorResponse(
           constants.MESSAGES.INVALID_CREDENTIALS,
-          constants.RESPONSE_STATUS_CODES.BAD_REQUEST
+          constants.RESPONSE_STATUS_CODES.NOT_FOUND
         );
       }
       let isMatch = await user.comparePasswords(password);
       if (!isMatch) {
         throw new ErrorResponse(
           constants.MESSAGES.INVALID_CREDENTIALS,
-          constants.RESPONSE_STATUS_CODES.BAD_REQUEST
+          constants.RESPONSE_STATUS_CODES.NOT_FOUND
         );
       }
       let token = user.getSignedToken();

@@ -28,6 +28,11 @@
 
 >npm instaall && npm run dev
 
+### To access the API documentation on postman, visit: 
+
+>https://documenter.getpostman.com/view/18528397/UVsEX9yh
+
 ### To access the API documentation on heroku, visit: 
 
 >https:/greycodecamp.herokuapp.com/api-docs
+

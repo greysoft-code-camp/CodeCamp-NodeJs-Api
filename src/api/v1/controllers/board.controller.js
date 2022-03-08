@@ -9,7 +9,6 @@ export const create = async (req, res) => {
       res.status(201).send({ msg: 'board created successfully', data: board });
     })
     .catch((error) => {
-      console.log(error);
       res.status(201).send({ msg: 'Unable to save board', data: error });
     });
 };
@@ -72,7 +71,7 @@ export const del = async (req, res) => {
     .then((boards) => {
       res
         .status(200)
-        .send({ msg: 'Boards Fetched Successfully', data: boards });
+        .send({ msg: 'Boards Deleted Successfully', data: boards });
     })
     .catch((error) => {
       res.status(400).send({ msg: 'Unable to fetch boards', data: error });

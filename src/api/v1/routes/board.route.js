@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   boardController.getAll(req, res);
 });
 
-router.put('/:boardId', (req, res) => {
+router.patch('/:boardId', (req, res) => {
   boardController.update(req, res);
 });
 

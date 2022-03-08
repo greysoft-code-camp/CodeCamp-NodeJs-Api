@@ -11,7 +11,7 @@ import { create, update } from '../validators/to-do.validator.js';
 
 const router = express.Router();
 
-router.post('/todo/:boardId', create, validator, createToDo);
+router.post('/:boardId', create, validator, createToDo);
 
 router.get('/:TodoID', getToDo);
 

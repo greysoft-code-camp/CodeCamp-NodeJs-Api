@@ -21,8 +21,7 @@ export default async (req, res, next) => {
       return next(new ErrorResponse('User not found', 404));
     }
     req.user = user;
-
-    role === user.role ? next() : next(new ErrorResponse('Unauthorized', 403));
+    next();
   } catch (error) {
     next(error);
   }
