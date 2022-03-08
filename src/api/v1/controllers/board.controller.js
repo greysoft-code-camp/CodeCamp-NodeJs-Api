@@ -1,10 +1,8 @@
-const Board = require("../models/Board.model");
+import Board from "../models/Board.model";
 
-module.exports = {
-    async create(req,res){
+   export const create = async(req,res) =>{
         //this.clear();
         let boardData = req.body;
-      
         let newBoard = new Board(boardData);
         newBoard.save().then(board=>{
             res.status(201).send({msg:"board created successfully",data:board})
@@ -13,8 +11,8 @@ module.exports = {
             res.status(201).send({msg:"Unable to save board",data:error})
         })
         
-    },
-    async update(req,res){
+    }
+    export const update = async (req,res)=>{
         Board.findOneAndUpdate({_id: req.params.boardId},req.body,{new: true}).then(board => {
             if(!board) {
                 return res.status(404).send({
@@ -39,7 +37,7 @@ module.exports = {
 
    
    
-    async getById(req,res){
+    export const getById = async(req,res)=>{
         Board.findOne({_id:req.params.boardId}).then(board=>{
             if(board)
                res.status(200).send({msg: "Board Fetched Successfully", data:board});
@@ -49,26 +47,25 @@ module.exports = {
         }).catch(error=>{
             res.status(400).send({msg: "Unable to fetch boards", data:error});
         });
-    },
+    }
 
 
-    async getAll(req,res){
+    export const getAll = async(req,res)=>{
         Board.find().then(boards=>{
             res.status(200).send({msg: "Boards Fetched Successfully", data:boards});
         }).catch(error=>{
             res.status(400).send({msg: "Unable to fetch boards", data:error});
         });
-    },
+    }
 
-    async delete(req,res){
+    export const del = async(req,res)=>{
         Board.findOneAndDelete({_id:req.params.boardId}).then(boards=>{
             res.status(200).send({msg: "Boards Fetched Successfully", data:boards});
         }).catch(error=>{
             res.status(400).send({msg: "Unable to fetch boards", data:error});
         });
-    },
+    }
 
    
 
 
-}
