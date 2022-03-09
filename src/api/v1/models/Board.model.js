@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import constants from '../../../config/constants.js';
 
 const BoardModel = new mongoose.Schema(
   {
@@ -9,6 +10,10 @@ const BoardModel = new mongoose.Schema(
 
     user: {
       type: mongoose.Types.ObjectId,
+    },
+    list: {
+      type: [String],
+      default: constants.ENUM.TODO,
     },
   },
   {

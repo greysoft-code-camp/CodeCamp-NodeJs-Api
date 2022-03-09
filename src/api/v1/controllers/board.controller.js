@@ -1,7 +1,6 @@
 import Board from '../models/Board.model.js';
 
 export const create = async (req, res) => {
-  //this.clear();
   let newBoard = new Board({ title: req.body.title, user: req.user._id });
   newBoard
     .save()
@@ -12,6 +11,59 @@ export const create = async (req, res) => {
       res.status(201).send({ msg: 'Unable to save board', data: error });
     });
 };
+
+export const addList = async (req, res) => {
+  Board.findById(req.params.boardId)
+    .then((board) => {
+      board.list.push(req.body.listName);
+      board
+        .save()
+        .then((list) => {
+          res
+            .status(201)
+            .send({ msg: 'list created successfully', data: list.list });
+        })
+        .catch((err) => {
+          res.status(201).send({ msg: 'Unable to save board', data: error });
+        });
+    })
+    .catch((error) => {
+      res.status(201).send({ msg: 'Unable to save board', data: error });
+    });
+};
+
+export const removeList = async (req, res) => {
+  Board.findById(req.params.boardId)
+    .then((board) => {
+      let name = req.body.listName.trim().toLowerCase();
+      let array = board.list;
+      let arrayCopy = [...array].map((item) => item.toLowerCase());
+      let index = arrayCopy.indexOf(name);
+      if (index >= 0) {
+        array = array.filter((item) => item.toLowerCase() !== name);
+        board.list = array;
+        board
+          .save()
+          .then((list) => {
+            res
+              .status(201)
+              .send({ msg: 'board removed successfully', data: list.list });
+          })
+          .catch((err) => {
+            res
+              .status(201)
+              .send({ msg: 'Unable to remove board', data: error });
+          });
+      } else {
+        res.status(201).send({ msg: 'list not found.' });
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(201).send({ msg: 'Unable to save board', data: error });
+    });
+};
+
 export const update = async (req, res) => {
   Board.findOneAndUpdate({ _id: req.params.boardId }, req.body.title, {
     new: true,
