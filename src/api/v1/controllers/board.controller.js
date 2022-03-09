@@ -15,7 +15,11 @@ export const create = async (req, res) => {
 export const addList = async (req, res) => {
   Board.findById(req.params.boardId)
     .then((board) => {
-      board.list.push(req.body.listName);
+      let name = req.body.listName.trim().toLowerCase();
+      if (board.list.includes(name)) {
+        res.status(201).send({ msg: 'list already exist' });
+      }
+      board.list.push(name);
       board
         .save()
         .then((list) => {
