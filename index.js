@@ -25,8 +25,8 @@ app.use(morgan('dev'));
 
 // Routes
 app.use('/api/auth', auth);
-app.use('/api/board', board);
-app.use('/api/todo', todo);
+app.use('/api/board', _protected, board);
+app.use('/api/todo', _protected, todo);
 app.use('/api-docs', swagger);
 app.use('*', (req, res) => {
   res.status(500).json({
