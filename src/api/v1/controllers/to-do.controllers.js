@@ -6,6 +6,7 @@ export const createToDo = async (req, res, next) => {
     let data = {};
     data.boardId = req.params.boardId;
     data.body = req.body.body;
+    data.list = req.body.list;
     let result = await service.create(data);
     return SuccessResponse.success(res, result);
   } catch (error) {

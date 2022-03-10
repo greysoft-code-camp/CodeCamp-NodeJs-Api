@@ -3,6 +3,7 @@ import constants from '../../../config/constants.js';
 
 export const create = [
   body(constants.FIELD.TODO_BODY).notEmpty({ checkfalsey: true }),
+  body(constants.FIELD.TODO_LIST).notEmpty({ checkfalsey: true }),
 ];
 
 export const update = [

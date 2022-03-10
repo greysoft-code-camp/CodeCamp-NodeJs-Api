@@ -18,7 +18,6 @@ const ToDoModel = new mongoose.Schema(
 
     list: {
       type: String,
-      default: constants.ENUM.TODO[0],
     },
   },
   {
