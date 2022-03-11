@@ -13,7 +13,6 @@ const BoardModel = new mongoose.Schema(
     },
     list: {
       type: [String],
-      default: constants.ENUM.TODO,
     },
   },
   {
