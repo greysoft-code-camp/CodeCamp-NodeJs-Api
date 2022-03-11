@@ -51,12 +51,42 @@ export const removeList = async (req, res) => {
           .then((list) => {
             res
               .status(201)
-              .send({ msg: 'board removed successfully', data: list.list });
+              .send({ msg: 'list removed successfully', data: list.list });
+          })
+          .catch((err) => {
+            res.status(201).send({ msg: 'Unable to remove list', data: error });
+          });
+      } else {
+        res.status(201).send({ msg: 'list not found.' });
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(201).send({ msg: 'Unable to save board', data: error });
+    });
+};
+
+export const renameList = async (req, res) => {
+  Board.findById(req.params.boardId)
+    .then((board) => {
+      let name = req.params.list.trim().toLowerCase();
+      let array = board.list;
+      let arrayCopy = [...array].map((item) => item.toLowerCase());
+      let index = arrayCopy.indexOf(name);
+      if (index >= 0) {
+        array[index] = req.body.newList;
+        board.list = array;
+        board
+          .save()
+          .then((list) => {
+            res
+              .status(201)
+              .send({ msg: 'list renamed successfully', data: list.list });
           })
           .catch((err) => {
             res
               .status(201)
-              .send({ msg: 'Unable to remove board', data: error });
+              .send({ msg: 'Unable to rename board', data: error });
           });
       } else {
         res.status(201).send({ msg: 'list not found.' });

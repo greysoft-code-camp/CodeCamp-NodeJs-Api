@@ -42,4 +42,13 @@ router.delete(
   }
 );
 
+router.patch(
+  '/:boardId/:list',
+  [body('newList').notEmpty({ checkfalsey: true })],
+  validator,
+  (req, res) => {
+    boardController.renameList(req, res);
+  }
+);
+
 export default router;
